@@ -7,8 +7,10 @@
 	<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/system.css">
 	<script src="assets/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/artTemplate/template-native.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="js/common.js"></script>
+	<script type="text/javascript" src="js/user.js"></script>
 </head>
 <body>
 	<div class="system">
@@ -76,14 +78,22 @@
 	        			<th>状态</th>
 	        			<th>操作</th>
 	        		</tr>
-	        		<tr>
-	        			<td>18500000000</td>
-	        			<td>18500000000</td>
-	        			<td>已启用</td>
+	        		
+	        		<script type="text/template" id="template">
+	        			<%for(var i=0;i<rows.length;i++){%>
+	        			<tr>
+	        			<td><%=rows[i].username%></td>
+	        			<td><%=rows[i].mobile%></td>
+	        			<td><%=rows[i].isDelete==1?'禁用':'启用'%></td>
 	        			<td>
-	        				<button type="button" class="btn btn-danger">禁用</button>
+	        				<button type="button" class="btn btn-danger statubtn"  data-id="<%=rows[i].id%>"><%=rows[i].isDelete==1?'起用':'禁用'%></button>
 	        			</td>
 	        		</tr>
+	        		<%}%>
+	        		</script>
+	        		<tbody id="userlist">
+	        			
+	        		</tbody>
 	        	</table>
 	        </div>
 		</div>
